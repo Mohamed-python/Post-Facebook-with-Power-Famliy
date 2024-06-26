@@ -33,7 +33,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 560px;
-            padding: 20px;
+            padding: 10px;
             /* box-sizing: border-box; */
             margin-bottom: 20px;
         }
@@ -84,10 +84,10 @@
         }
         .post {
             background-color: #fff;
-            border-radius: 8px;
+            /* border-radius: 8px; */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 560px;
-            padding: 20px;
+            padding: 10px;
             margin-bottom: 20px;
             position: relative;
             
@@ -157,6 +157,7 @@
             gap: 15px;
             font-size: 12px;
             color: #616770;
+            margin-right: 20px;
         }
         .close-button {
             text-align: right;
@@ -167,6 +168,7 @@
             right: 16px;
             width: 18px;
             opacity: 0.6;
+            margin-right: 20px;
         }
         .hidden {
             display: none;
@@ -193,16 +195,37 @@
     </style>
 
 <style>
-    /* CSS عندما يكون حجم الشاشة أقل من 768 بكسل */
     @media (max-width: 768px) {
-        /* أضف الأنماط التي تريدها هنا */
         .container {
-            width: 95%; /* مثال على تغيير حجم الخط للأجهزة المحمولة */
+            width: 95%; 
         }
 
-        /* قواعد أخرى يمكنك تغييرها */
         .post  {
-            width: 95%; /* مثال على تغيير العرض لعنصر معين في الموبايل */
+            width: 95%; 
+        }
+
+        .post-content{
+            font-size: 16px;
+        }
+
+        .post-footer .counters {
+            display: flex;
+            gap: 0px;
+            font-size: 9px;
+            color: #616770;
+            margin-right: 8px;
+        }
+    }
+</style>
+
+<style>
+    @media (max-width: 290px) {
+        .container {
+            width: 95%;
+        }
+
+        .post  {
+            width: 95%; 
         }
 
         .post-content{
@@ -214,11 +237,10 @@
             gap: 0px;
             font-size: 10px;
             color: #616770;
+            
         }
     }
 </style>
-
-
 </head>
 <body>
     <div class="container">
@@ -306,7 +328,6 @@ function updateNameList() {
         }
     }
 
-    // تحديث قيمة العنصر span بالأسماء المحددة
     const nameListElement = document.getElementById("name-list");
     nameListElement.textContent = randomNames.join(",");
     };
@@ -317,21 +338,86 @@ function updateNameList() {
     <script>
 
 
+        // document.getElementById('download-post').addEventListener('click', function() {
+        //     var postElement = document.getElementById('post');
+        //     htmlToImage.toPng(postElement)
+        //         .then(function (dataUrl) {
+        //             var link = document.createElement('a');
+        //             link.href = dataUrl;
+        //             link.download = 'post.png';
+        //             link.click();
+        //         })
+        //         .catch(function (error) {
+        //             console.error('Error generating image:', error);
+        //         });
+        // });
         document.getElementById('download-post').addEventListener('click', function() {
-            var postElement = document.getElementById('post');
-            htmlToImage.toPng(postElement)
-                .then(function (dataUrl) {
-                    var link = document.createElement('a');
-                    link.href = dataUrl;
-                    link.download = 'post.png';
-                    link.click();
-                })
-                .catch(function (error) {
-                    console.error('Error generating image:', error);
-                });
+    var postElement = document.getElementById('post');
+    
+    postElement.style.width = '570px';  
+    // postElement.style.height = '300px'; 
+    postElement.style.padding = '10px 10px 10px 10px'; 
+    postElement.style.margin = '0';  
+    // postElement.style.borderRadius = '10px 10px 10px 10px'; 
+    // postElement.style.overflow = 'hidden';  
+    
+    // postElement.style.textAlign = 'left';  
+    
+    var innerElements = postElement.getElementsByClassName('inner-element');
+    for (var i = 0; i < innerElements.length; i++) {
+        var innerElement = innerElements[i];
+        // innerElement.style.width = '580px';  
+        // innerElement.style.height = '280px'; 
+        // innerElement.style.padding = '10px';  
+    }
+    
+
+    var options = {
+        width: 600,
+        // height: 300
+    };
+    
+    htmlToImage.toPng(postElement, options) 
+        .then(function (dataUrl) {
+            var link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = 'post.png';
+            link.click();
+            
+            postElement.style.width = ''; 
+            postElement.style.height = ''; 
+            postElement.style.padding = ''; 
+            postElement.style.margin = ''; 
+            postElement.style.border = ''; 
+            postElement.style.borderRadius = ''; 
+            postElement.style.textAlign = ''; 
+            
+            for (var i = 0; i < innerElements.length; i++) {
+                var innerElement = innerElements[i];
+                innerElement.style.width = ''; 
+                innerElement.style.height = ''; 
+                innerElement.style.padding = ''; 
+            }
+        })
+        .catch(function (error) {
+            console.error('Error generating image:', error);
+            
+            postElement.style.width = ''; 
+            postElement.style.height = ''; 
+            postElement.style.padding = ''; 
+            postElement.style.margin = ''; 
+            postElement.style.border = ''; 
+            postElement.style.borderRadius = '';
+            postElement.style.textAlign = ''; 
+            
+            for (var i = 0; i < innerElements.length; i++) {
+                var innerElement = innerElements[i];
+                innerElement.style.width = ''; 
+                innerElement.style.height = ''; 
+                innerElement.style.padding = ''; 
+            }
         });
-
-
+});
 
 
 
@@ -343,7 +429,7 @@ function updateNameList() {
 document.getElementById('post-text').addEventListener('input', function() {
     var postContent = document.getElementById('display-text');
     var postText = this.value || 'Hello Power Family.';
-    var isArabic = /[\u0600-\u06FF]/.test(postText); // Check for Arabic Unicode range
+    var isArabic = /[\u0600-\u06FF]/.test(postText); 
     postContent.innerText = postText;
     postContent.style.direction = isArabic ? 'rtl' : 'ltr';
 });
@@ -430,7 +516,6 @@ function updateTotalInteractions() {
     const totalInteractionsElement = document.getElementById('total-interactions-value');
     totalInteractionsElement.innerText = formattedTotal;
 
-    // Update individual counters with formatted numbers
     document.getElementById('like-counter').innerText = `${formatNumber(likeCount)} Likes`;
     document.getElementById('comment-counter').innerText = `${formatNumber(commentCount)} Comments`;
     document.getElementById('share-counter').innerText = `${formatNumber(shareCount)} Shares`;
