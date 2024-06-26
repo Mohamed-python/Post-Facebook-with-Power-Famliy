@@ -282,7 +282,7 @@ const names = [
 function updateNameList() {
     // احتمالية عرض 3 أسماء عشوائية
     const randomNames = [];
-    while (randomNames.length < 3) {
+    while (randomNames.length < 2) {
         const randomIndex = Math.floor(Math.random() * names.length);
         const randomName = names[randomIndex];
         if (!randomNames.includes(randomName)) {
