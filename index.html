@@ -380,33 +380,44 @@ function calculateTotalInteractions() {
 }
 document.getElementById('like-count').addEventListener('input', function() {
     updateTotalInteractions();
-    updateNameList();
 });
+
 document.getElementById('comment-count').addEventListener('input', function() {
     updateTotalInteractions();
-    updateNameList();
 });
+
 document.getElementById('share-count').addEventListener('input', function() {
     updateTotalInteractions();
-    updateNameList();
 });
+
+function formatNumber(num) {
+    if (num >= 1000 && num < 1000000) {
+        return (num / 1000).toFixed(1) + 'K';
+    } else if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    } else {
+        return num.toString();
+    }
+}
+
 function updateTotalInteractions() {
     const likeCount = parseInt(document.getElementById('like-count').value) || 0;
     const commentCount = parseInt(document.getElementById('comment-count').value) || 0;
     const shareCount = parseInt(document.getElementById('share-count').value) || 0;
     const totalInteractions = likeCount + commentCount + shareCount;
-    let formattedTotal = totalInteractions.toString();
-    if (totalInteractions >= 1000 && totalInteractions < 1000000) {
-        formattedTotal = (totalInteractions / 1000).toFixed(1) + 'k';
-    } else if (totalInteractions >= 1000000) {
-        formattedTotal = (totalInteractions / 1000000).toFixed(1) + 'M';
-    }
+
+    const formattedTotal = formatNumber(totalInteractions);
+
     const totalInteractionsElement = document.getElementById('total-interactions-value');
     totalInteractionsElement.innerText = formattedTotal;
-    document.getElementById('like-counter').innerText = `${likeCount} Likes`;
-    document.getElementById('comment-counter').innerText = `${commentCount} Comments`;
-    document.getElementById('share-counter').innerText = `${shareCount} Shares`;
+
+    // Update individual counters with formatted numbers
+    document.getElementById('like-counter').innerText = `${formatNumber(likeCount)} Likes`;
+    document.getElementById('comment-counter').innerText = `${formatNumber(commentCount)} Comments`;
+    document.getElementById('share-counter').innerText = `${formatNumber(shareCount)} Shares`;
 }
+
+
 
 
 
