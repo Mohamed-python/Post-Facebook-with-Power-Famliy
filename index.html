@@ -276,7 +276,8 @@
             <div class="user-info">
                 <span class="name" id="display-name">Username</span>
                 
-                <span class="time" id="display-username">Just now</span>
+                <!-- Just now -->
+                <span class="time" id="display-username"></span>
             </div>
             <div class="verification-icon">
                     <img src="verification.png" alt="Verified Icon">
@@ -310,6 +311,25 @@
     <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.9.0/dist/html-to-image.min.js"></script>
     
     
+
+ <script>
+        function changeTimeText() {
+            const timeOptions = ["30 minutes ago", "1 hour ago", "2 hours ago", "3 hours ago"];
+            const randomIndex = Math.floor(Math.random() * timeOptions.length);
+            const newTimeText = timeOptions[randomIndex];
+            
+            const timeElement = document.querySelector(".time#display-username");
+            if (timeElement) {
+                timeElement.textContent = newTimeText;
+            }
+        }
+
+        // Change the time text when the page loads
+        window.onload = changeTimeText;
+    </script>
+
+
+
     <script>
 
 const names = [
