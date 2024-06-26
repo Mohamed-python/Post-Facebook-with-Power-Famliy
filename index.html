@@ -95,7 +95,6 @@
         .post-header {
             display: flex;
             align-items: center;
-            /* margin-bottom: 20px; */
         }
         .post-header img {
             border-radius: 50%;
@@ -103,11 +102,12 @@
             height: 50px;
             margin-right: 10px;
         }
-        .post-header .user-info {
+        .user-info {
             display: flex;
             flex-direction: column;
-            font-family: 'Arial';
         }
+
+        
         .post-header .user-info .name {
             font-weight: bold;
         }
@@ -184,17 +184,35 @@
         .avatar-section input[type="file"] {
             flex-grow: 1;
         }
-        .verification-icon img {
-            width: 18px;
-            height: 18px;
-            margin-left: 0px;
-            vertical-align: middle;
-            margin-bottom: 14px;
+        .name-verification {
+            display: flex;
+            align-items: center;
+        }
+        .name-verification img{
+            width: 19px;
+            height: 19px;
+            margin-right: 7px;
+        }
+
+        .verification-icon {
+            /* margin-left: 5px;  */
+            margin-top: 5px;
         }
         img#display-image{
             border-radius: 10px;
             margin: auto;
             width: 100%;
+        }
+
+
+        .dark-mode {
+            background-color: rgb(24, 24, 24);
+            color: white;
+        }
+
+        .dark-modereqt{
+            background-color: rgb(29, 26, 26);
+            color: rgb(167, 167, 167);
         }
     </style>
 
@@ -265,6 +283,9 @@
         </div>
         <button id="toggle-actions" class="upload-button">إضافة أعداد التفاعل</button>
         <br>
+
+        <button id="toggle-dark-mode" class="upload-button">دارك مود</button>
+        <br>
         <button id="download-post" class="upload-button">تحميل صورة البوست</button>
     </div>
 
@@ -273,19 +294,19 @@
             <!-- &hellip; -->
         <img src="more_icon_177186.png" alt="">
         </div>
-        
         <div class="post-header">
             <img id="display-avatar" src="123.png" alt="Avatar">
             <div class="user-info">
-                <span class="name" id="display-name">Username</span>
-                
-                <!-- Just now -->
+                <div class="name-verification">
+                    <span class="name" id="display-name">Username</span>
+                    <div class="verification-icon">
+                        <img src="verification.png" alt="Verified Icon">
+                    </div>
+                </div>
                 <span class="time" id="display-username"></span>
             </div>
-            <div class="verification-icon">
-                    <img src="verification.png" alt="Verified Icon">
-                </div>
         </div>
+        
 
 
 
@@ -332,6 +353,21 @@
     </script>
 
 
+
+
+<script>
+
+    document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+                var postElement = document.getElementById('post');
+    
+                var req = document.getElementById("name-list");
+    
+    
+    
+                postElement.classList.toggle('dark-mode');
+                // req.classList.toggle('dark-modereqt');
+            });
+    </script>
 
     <script>
 
