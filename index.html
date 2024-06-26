@@ -207,8 +207,8 @@
 
         .post-footer .counters {
             display: flex;
-            gap: 4px;
-            font-size: 11px;
+            gap: 0px;
+            font-size: 10px;
             color: #616770;
         }
     }
@@ -229,9 +229,9 @@
             <div class="section">إضافة صورة للمنشور</div>
         </div>
         <div id="interaction-fields" class="hidden">
-            <input type="number" id="like-count" placeholder="Number of Likes" value="7" min="1">
-            <input type="number" id="comment-count" placeholder="Number of Comments" value="1" min="0">
-            <input type="number" id="share-count" placeholder="Number of Shares" value="1" min="0">
+            <input type="number" id="like-count" placeholder="Number of Likes" value="7" min="1" maxlength="5">
+            <input type="number" id="comment-count" placeholder="Number of Comments" value="1" min="0" maxlength="5">
+            <input type="number" id="share-count" placeholder="Number of Shares" value="1" min="0" maxlength="5">
         </div>
         <button id="toggle-actions" class="upload-button">إضافة أعداد التفاعل</button>
         <br>
@@ -386,14 +386,17 @@ function calculateTotalInteractions() {
     return formattedTotal;
 }
 document.getElementById('like-count').addEventListener('input', function() {
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
     updateTotalInteractions();
 });
 
 document.getElementById('comment-count').addEventListener('input', function() {
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
     updateTotalInteractions();
 });
 
 document.getElementById('share-count').addEventListener('input', function() {
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
     updateTotalInteractions();
 });
 
