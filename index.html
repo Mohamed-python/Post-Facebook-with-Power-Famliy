@@ -191,6 +191,7 @@
         img#display-image{
             border-radius: 10px;
             margin: auto;
+            width: 100%;
         }
     </style>
 
@@ -210,8 +211,8 @@
 
         .post-footer .counters {
             display: flex;
-            gap: 0px;
-            font-size: 9px;
+            gap: 10px;
+            font-size: 10px;
             color: #616770;
             margin-right: 8px;
         }
@@ -234,7 +235,7 @@
 
         .post-footer .counters {
             display: flex;
-            gap: 0px;
+            gap: 10px;
             font-size: 10px;
             color: #616770;
             
@@ -480,17 +481,17 @@ function calculateTotalInteractions() {
     return formattedTotal;
 }
 document.getElementById('like-count').addEventListener('input', function() {
-    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 6);
     updateTotalInteractions();
 });
 
 document.getElementById('comment-count').addEventListener('input', function() {
-    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 6);
     updateTotalInteractions();
 });
 
 document.getElementById('share-count').addEventListener('input', function() {
-    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 5);
+    this.value = Math.max(0, parseInt(this.value)).toString().slice(0, 6);
     updateTotalInteractions();
 });
 
