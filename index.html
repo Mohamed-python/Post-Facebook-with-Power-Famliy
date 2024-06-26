@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منشور وحفظ صورة</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    
+    <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            font-family: "Rubik", sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            margin: 0;
+            flex-direction: column;
+
+            /*  */
+
+        }
+        
+
+        /* ********************** */
+        .post-content {
+            font-weight: weight;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            padding: 20px;
+            /* box-sizing: border-box; */
+            margin-bottom: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+        }
+        .section {
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            width: 60%;
+            padding: 10px;
+            text-align: center;
+            font-family: "Tahoma";
+            font-size: 15px;
+        }
+        input, textarea {
+            width: calc(100%);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: Tahoma;
+            font-size: 15px;
+        }
+        .upload-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 5px;
+            font-family: "Tahoma";
+            font-size: 15px;
+        }
+        .upload-button:hover {
+            background-color: #218838;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .post-header img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .post-header .user-info {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial';
+        }
+        .post-header .user-info .name {
+            font-weight: bold;
+        }
+        .post-header .user-info .time {
+            color: #616770;
+            font-size: 12px;
+        }
+        .total-interactions {
+            margin: auto;
+            margin-left: 5px;
+            margin-left: 5px;
+            display: flex;
+            gap: 3px;
+            font-size: 13px;
+            color: #616770;
+        }
+        .post-content {
+            /* font-family: 'Arial'; */
+            font-family: "Rubik", sans-serif;
+            margin-top: 10px;
+            font-size: 20px;
+            overflow-wrap: break-word;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            padding-bottom: 4px;
+            display: flex;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .post-footer .actions {
+            display: flex;
+        }
+        .post-footer .actions span {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .post-footer .counters {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #616770;
+        }
+        .close-button {
+            text-align: right;
+        }
+        .close-button img {
+            position: absolute;
+            top: 26px;
+            right: 16px;
+            width: 18px;
+            opacity: 0.6;
+        }
+        .hidden {
+            display: none;
+        }
+        .avatar-section {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .avatar-section input[type="file"] {
+            flex-grow: 1;
+        }
+        .verification-icon img {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            vertical-align: middle;
+            margin-bottom: 14px;
+        }
+    </style>
+
+<style>
+    /* CSS عندما يكون حجم الشاشة أقل من 768 بكسل */
+    @media (max-width: 768px) {
+        /* أضف الأنماط التي تريدها هنا */
+        .container {
+            width: 95%; /* مثال على تغيير حجم الخط للأجهزة المحمولة */
+        }
+
+        /* قواعد أخرى يمكنك تغييرها */
+        .post  {
+            width: 95%; /* مثال على تغيير العرض لعنصر معين في الموبايل */
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="avatar-section">
+            <input type="file" id="avatar-upload" class="upload-button" width="200px">
+            <div class="section">صورة البروفايل</div>
+        </div>
+        <input type="text" id="name" placeholder="أدخل أسم حسابك هنا">
+        <textarea id="post-text" placeholder="أدخل نص المنشور هنا"></textarea>
+        <div class="avatar-section">
+            <input type="file" id="image-upload" class="upload-button">
+            <div class="section">إضافة صورة للمنشور</div>
+        </div>
+        <div id="interaction-fields" class="hidden">
+            <input type="number" id="like-count" placeholder="Number of Likes" value="7" min="1">
+            <input type="number" id="comment-count" placeholder="Number of Comments" value="1" min="0">
+            <input type="number" id="share-count" placeholder="Number of Shares" value="1" min="0">
+        </div>
+        <button id="toggle-actions" class="upload-button">إضافة أعداد التفاعل</button>
+        <br>
+        <button id="download-post" class="upload-button">تحميل صورة البوست</button>
+    </div>
+
+    <div class="post" id="post">
+        <div class="close-button">
+            <!-- &hellip; -->
+        <img src="more_icon_177186.png" alt="">
+        </div>
+        <div class="post-header">
+            <img id="display-avatar" src="123.png" alt="Avatar">
+            <div class="user-info">
+                <span class="name" id="display-name">Username</span>
+                <span class="time" id="display-username">Just now</span>
+            </div>
+            <div class="verification-icon">
+                <img src="verification.png" alt="Verified Icon">
+            </div>
+        </div>
+        <div class="post-content" id="display-text">
+            Hello dear family in the Power Family group, we are always here to support and inspire each other. In this family, we share dreams and cooperate to achieve them, strengthen mutual strength and grow together.
+        </div>
+        <img id="display-image" src="" alt="" style="display: none;" width="400">
+        <div class="post-footer">
+            <div class="actions" id="action-icons" class="hidden">
+                <span><img src="like.jpg" alt="Like" width="21"></span>
+                <span><img src="lave.jpg" alt="Comment" width="21"></span>
+                <span><img src="care.jpg" alt="Share" width="21"></span>
+                <div class="total-interactions">
+
+                    <span id="total-interactions-value">9</span>
+                    <span id="name-list">mohamed</span>
+                </div>
+            </div>
+            <div class="counters">
+                <span id="like-counter">7 Likes</span>
+                <span id="comment-counter">1 Comment</span>
+                <span id="share-counter">1 Share</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.9.0/dist/html-to-image.min.js"></script>
+    
+    
+    <script>
+
+const names = [
+    "محمد", "علي", "فاطمة", "John", "Emily", "Ahmed", "Maria", "سارة", "Michael", "يوسف",
+    "Sophia", "مريم", "Daniel", "Lily", "محمود", "Olivia", "أمير", "Emma", "خالد", "Jacob"
+];
+
+function updateNameList() {
+    // احتمالية عرض 3 أسماء عشوائية
+    const randomNames = [];
+    while (randomNames.length < 3) {
+        const randomIndex = Math.floor(Math.random() * names.length);
+        const randomName = names[randomIndex];
+        if (!randomNames.includes(randomName)) {
+            randomNames.push(randomName);
+        }
+    }
+
+    // تحديث قيمة العنصر span بالأسماء المحددة
+    const nameListElement = document.getElementById("name-list");
+    nameListElement.textContent = randomNames.join(",");
+    };
+    updateNameList();
+    </script>
+    
+    
+    <script>
+
+
+        document.getElementById('download-post').addEventListener('click', function() {
+            var postElement = document.getElementById('post');
+            htmlToImage.toPng(postElement)
+                .then(function (dataUrl) {
+                    var link = document.createElement('a');
+                    link.href = dataUrl;
+                    link.download = 'post.png';
+                    link.click();
+                })
+                .catch(function (error) {
+                    console.error('Error generating image:', error);
+                });
+        });
+
+
+
+
+
+
+
+    document.getElementById('name').addEventListener('input', function() {
+    document.getElementById('display-name').innerText = this.value || 'Username';
+});
+document.getElementById('post-text').addEventListener('input', function() {
+    var postContent = document.getElementById('display-text');
+    var postText = this.value || 'Hello Power Family.';
+    var isArabic = /[\u0600-\u06FF]/.test(postText); // Check for Arabic Unicode range
+    postContent.innerText = postText;
+    postContent.style.direction = isArabic ? 'rtl' : 'ltr';
+});
+document.getElementById('image-upload').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const image = document.getElementById('display-image');
+        image.src = reader.result;
+        image.style.display = 'block';
+    };
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+});
+document.getElementById('avatar-upload').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const avatar = document.getElementById('display-avatar');
+        avatar.src = reader.result;
+    };
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+});
+document.getElementById('toggle-actions').addEventListener('click', function() {
+    const interactionFields = document.getElementById('interaction-fields');
+    const actionIcons = document.getElementById('action-icons');
+    const totalInteractions = document.getElementById('total-interactions-value');
+    if (interactionFields.classList.contains('hidden')) {
+        interactionFields.classList.remove('hidden');
+        actionIcons.classList.remove('hidden');
+        totalInteractions.innerText = calculateTotalInteractions();
+    } else {
+        interactionFields.classList.add('hidden');
+        actionIcons.classList.add('hidden');
+    }
+});
+function calculateTotalInteractions() {
+    const likeCount = parseInt(document.getElementById('like-count').value) || 0;
+    const commentCount = parseInt(document.getElementById('comment-count').value) || 0;
+    const shareCount = parseInt(document.getElementById('share-count').value) || 0;
+    const totalInteractions = likeCount + commentCount + shareCount;
+    let formattedTotal = totalInteractions.toString();
+    if (totalInteractions >= 1000 && totalInteractions < 1000000) {
+        formattedTotal = (totalInteractions / 1000).toFixed(1) + 'k';
+    } else if (totalInteractions >= 1000000) {
+        formattedTotal = (totalInteractions / 1000000).toFixed(1) + 'M';
+    }
+    return formattedTotal;
+}
+document.getElementById('like-count').addEventListener('input', function() {
+    updateTotalInteractions();
+    updateNameList();
+});
+document.getElementById('comment-count').addEventListener('input', function() {
+    updateTotalInteractions();
+    updateNameList();
+});
+document.getElementById('share-count').addEventListener('input', function() {
+    updateTotalInteractions();
+    updateNameList();
+});
+function updateTotalInteractions() {
+    const likeCount = parseInt(document.getElementById('like-count').value) || 0;
+    const commentCount = parseInt(document.getElementById('comment-count').value) || 0;
+    const shareCount = parseInt(document.getElementById('share-count').value) || 0;
+    const totalInteractions = likeCount + commentCount + shareCount;
+    let formattedTotal = totalInteractions.toString();
+    if (totalInteractions >= 1000 && totalInteractions < 1000000) {
+        formattedTotal = (totalInteractions / 1000).toFixed(1) + 'k';
+    } else if (totalInteractions >= 1000000) {
+        formattedTotal = (totalInteractions / 1000000).toFixed(1) + 'M';
+    }
+    const totalInteractionsElement = document.getElementById('total-interactions-value');
+    totalInteractionsElement.innerText = formattedTotal;
+    document.getElementById('like-counter').innerText = `${likeCount} Likes`;
+    document.getElementById('comment-counter').innerText = `${commentCount} Comments`;
+    document.getElementById('share-counter').innerText = `${shareCount} Shares`;
+}
+
+
+
+
+    </script>
+</body>
+</html>
