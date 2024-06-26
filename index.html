@@ -192,6 +192,7 @@
             width: 19px;
             height: 19px;
             margin-right: 7px;
+            margin-top: 3px;
         }
 
         .verification-icon {
@@ -321,8 +322,9 @@
                 <span><img src="Care.png" alt="Share" width="25"></span>
                 <div class="total-interactions">
 
-                    <span id="total-interactions-value">9</span>
+                    
                     <span id="name-list">mohamed</span>
+                    <span id="total-interactions-value">9</span>
                 </div>
             </div>
             <div class="counters">
@@ -413,81 +415,102 @@ function updateNameList() {
 
 
         // //////////////////////////////////////////
-    document.getElementById('download-post').addEventListener('click', function() {
-    var postElement = document.getElementById('post');
+
+//     document.getElementById('download-post').addEventListener('click', function() {
+//     var postElement = document.getElementById('post');
     
-    postElement.style.width = '600px';  
-    // postElement.style.height = '300px'; 
-    postElement.style.padding = '10px 10px 10px 10px'; 
-    postElement.style.margin = '0';  
-    postElement.style.borderRadius = '10px 10px 10px 10px';
-    // postElement.style.overflow = 'hidden';  
+//     postElement.style.width = '600px';  
+//     // postElement.style.height = '300px'; 
+//     postElement.style.padding = '10px 10px 10px 10px'; 
+//     postElement.style.margin = '0';  
+//     postElement.style.borderRadius = '10px 10px 10px 10px';
+//     // postElement.style.overflow = 'hidden';  
     
-    // postElement.style.textAlign = 'left';  
+//     // postElement.style.textAlign = 'left';  
     
-    var innerElements = postElement.getElementsByClassName('inner-element');
-    for (var i = 0; i < innerElements.length; i++) {
-        var innerElement = innerElements[i];
-        // innerElement.style.width = '580px';  
-        // innerElement.style.height = '280px'; 
-        // innerElement.style.padding = '10px';  
-    }
+//     var innerElements = postElement.getElementsByClassName('inner-element');
+//     for (var i = 0; i < innerElements.length; i++) {
+//         var innerElement = innerElements[i];
+//         // innerElement.style.width = '580px';  
+//         // innerElement.style.height = '280px'; 
+//         // innerElement.style.padding = '10px';  
+//     }
     
 
-    var options = {
-        width: 620,
-        // height: 300
+//     var options = {
+//         width: 620,
+//         // height: 300
 
-    };
+//     };
     
     
-    htmlToImage.toPng(postElement, options) 
-        .then(function (dataUrl) {
-            var link = document.createElement('a');
-            link.href = dataUrl;
-            link.download = 'post.png';
-            link.click();
+//     htmlToImage.toPng(postElement, options) 
+//         .then(function (dataUrl) {
+//             var link = document.createElement('a');
+//             link.href = dataUrl;
+//             link.download = 'post.png';
+//             link.click();
             
-            postElement.style.width = ''; 
-            postElement.style.height = ''; 
-            postElement.style.padding = ''; 
-            postElement.style.margin = ''; 
-            postElement.style.border = ''; 
-            postElement.style.borderRadius = ''; 
-            postElement.style.textAlign = ''; 
+//             postElement.style.width = ''; 
+//             postElement.style.height = ''; 
+//             postElement.style.padding = ''; 
+//             postElement.style.margin = ''; 
+//             postElement.style.border = ''; 
+//             postElement.style.borderRadius = ''; 
+//             postElement.style.textAlign = ''; 
             
-            for (var i = 0; i < innerElements.length; i++) {
-                var innerElement = innerElements[i];
-                innerElement.style.width = ''; 
-                innerElement.style.height = ''; 
-                innerElement.style.padding = ''; 
-            }
-        })
-        .catch(function (error) {
-            console.error('Error generating image:', error);
+//             for (var i = 0; i < innerElements.length; i++) {
+//                 var innerElement = innerElements[i];
+//                 innerElement.style.width = ''; 
+//                 innerElement.style.height = ''; 
+//                 innerElement.style.padding = ''; 
+//             }
+//         })
+//         .catch(function (error) {
+//             console.error('Error generating image:', error);
             
-            postElement.style.width = ''; 
-            postElement.style.height = ''; 
-            postElement.style.padding = ''; 
-            postElement.style.margin = ''; 
-            postElement.style.border = ''; 
-            postElement.style.borderRadius = '';
-            postElement.style.textAlign = ''; 
+//             postElement.style.width = ''; 
+//             postElement.style.height = ''; 
+//             postElement.style.padding = ''; 
+//             postElement.style.margin = ''; 
+//             postElement.style.border = ''; 
+//             postElement.style.borderRadius = '';
+//             postElement.style.textAlign = ''; 
             
-            for (var i = 0; i < innerElements.length; i++) {
-                var innerElement = innerElements[i];
-                innerElement.style.width = ''; 
-                innerElement.style.height = ''; 
-                innerElement.style.padding = ''; 
-            }
-        });
-});
+//             for (var i = 0; i < innerElements.length; i++) {
+//                 var innerElement = innerElements[i];
+//                 innerElement.style.width = ''; 
+//                 innerElement.style.height = ''; 
+//                 innerElement.style.padding = ''; 
+//             }
+//         });
+// });
 
 
     // 111111111111111111111111111111111
 
 
+   
+    document.getElementById('download-post').addEventListener('click', function() {
+      var postElement = document.getElementById('post');
+      
+      var options = {
+        width: postElement.offsetWidth,
+        height: postElement.offsetHeight
+      };
 
+      htmlToImage.toPng(postElement, options)
+        .then(function (dataUrl) {
+          var link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = 'post.png';
+          link.click();
+        })
+        .catch(function (error) {
+          console.error('Error generating image:', error);
+        });
+    });
+  
 
 
 
@@ -600,5 +623,6 @@ function updateTotalInteractions() {
 
 
     </script>
+
 </body>
 </html>
