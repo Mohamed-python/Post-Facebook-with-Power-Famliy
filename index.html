@@ -300,7 +300,6 @@
                 </div>
             </div>
             <div class="counters">
-                <span id="like-counter">7 Likes</span>
                 <span id="comment-counter">1 Comment</span>
                 <span id="share-counter">1 Share</span>
             </div>
@@ -516,7 +515,6 @@ function updateTotalInteractions() {
     const totalInteractionsElement = document.getElementById('total-interactions-value');
     totalInteractionsElement.innerText = formattedTotal;
 
-    document.getElementById('like-counter').innerText = `${formatNumber(likeCount)} Likes`;
     document.getElementById('comment-counter').innerText = `${formatNumber(commentCount)} Comments`;
     document.getElementById('share-counter').innerText = `${formatNumber(shareCount)} Shares`;
 }
