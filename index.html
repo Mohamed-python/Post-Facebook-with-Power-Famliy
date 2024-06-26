@@ -117,10 +117,9 @@
         }
         .total-interactions {
             margin: auto;
-            margin-left: 5px;
-            margin-left: 5px;
+            margin-left: 8px;
             display: flex;
-            gap: 3px;
+            gap: 10px;
             font-size: 13px;
             color: #616770;
         }
@@ -146,12 +145,16 @@
         }
         .post-footer .actions {
             display: flex;
+            margin-left: 5px;
         }
         .post-footer .actions span {
             display: flex;
             align-items: center;
             cursor: pointer;
+            margin-left: -9px;
         }
+
+
         .post-footer .counters {
             display: flex;
             gap: 15px;
@@ -292,9 +295,9 @@
         <img id="display-image" src="" alt="" style="display: none;" width="400">
         <div class="post-footer">
             <div class="actions" id="action-icons" class="hidden">
-                <span><img src="like.jpg" alt="Like" width="19"></span>
-                <span><img src="lave.jpg" alt="Comment" width="19"></span>
-                <span><img src="care.jpg" alt="Share" width="19"></span>
+                <span><img src="like.png" alt="Like" width="25"></span>
+                <span><img src="lave.png" alt="Comment" width="25"></span>
+                <span><img src="Care.png" alt="Share" width="25"></span>
                 <div class="total-interactions">
 
                     <span id="total-interactions-value">9</span>
@@ -544,7 +547,7 @@ function updateTotalInteractions() {
     const likeCount = parseInt(document.getElementById('like-count').value) || 0;
     const commentCount = parseInt(document.getElementById('comment-count').value) || 0;
     const shareCount = parseInt(document.getElementById('share-count').value) || 0;
-    const totalInteractions = likeCount + commentCount + shareCount;
+    const totalInteractions = likeCount ;
 
     const formattedTotal = formatNumber(totalInteractions);
 
