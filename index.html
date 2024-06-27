@@ -388,11 +388,11 @@
 
         .total-interactions , .post-footer .actions span{
             font-size: 11px;
-            gap: 10px;
+            gap: 11px;
         }
 
         .post-footer .actions img {
-            width: 21px;
+            width: 22px;
         }
 
     }
@@ -576,7 +576,7 @@ const names = [
 function updateNameList() {
     // احتمالية عرض 3 أسماء عشوائية
     const randomNames = [];
-    while (randomNames.length < 2) {
+    while (randomNames.length < 1) {
         const randomIndex = Math.floor(Math.random() * names.length);
         const randomName = names[randomIndex];
         if (!randomNames.includes(randomName)) {
