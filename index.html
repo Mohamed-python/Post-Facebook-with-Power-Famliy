@@ -6,11 +6,13 @@
     <title>Facebook Posts (Power Family)</title>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
+
+
+<!--         
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const targetURL = "https://www.facebook.com/groups/811442887308111"; // الرابط المستهدف
     
-                // دالة للتحقق من التغييرات والتلاعب
                 function checkChanges() {
                     const mohamedLink = document.querySelector('.end a');
                     if (!mohamedLink || 
@@ -20,7 +22,6 @@
                     }
                 }
     
-                // استخدام MutationObserver لمراقبة التغييرات
                 const observer = new MutationObserver(function(mutationsList, observer) {
                     mutationsList.forEach(function(mutation) {
                         if (mutation.type === 'attributes' || mutation.type === 'childList') {
@@ -29,13 +30,16 @@
                     });
                 });
     
-                // بدء المراقبة لعنصر div بفئة .end
                 observer.observe(document.querySelector('.end'), { childList: true, subtree: true, attributes: true });
     
-                // التحقق من التغييرات عند تحميل الصفحة
                 checkChanges();
             });
-        </script>
+        </script> -->
+
+
+
+
+
     <style>
         body {
             /* font-family: Arial, sans-serif; */
@@ -111,7 +115,7 @@
             border: 1px solid #007bff;
             border-radius: 8px;
             width: 60%;
-            padding: 10px;
+            padding: 6px;
             text-align: center;
             font-family: "Tahoma";
             font-size: 15px;
@@ -125,14 +129,14 @@
             box-sizing: border-box;
             /* font-family: Tahoma; */
             font-family: "Roboto", "Noto", "Segoe UI", "Calibre", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif" !important;
-            font-size: 15px;
+            font-size: 13px;
         }
         .upload-button {
             background-color: #0866ff;
             color: #fff;
             border: none;
             border-radius: 8px;
-            padding: 10px;
+            padding: 6px;
             width: 100%;
             cursor: pointer;
             margin-bottom: 5px;
@@ -376,7 +380,6 @@
             font-size: 11px;
             color: #616770;
             margin-right: 0px;
-            /* margin-top: 4px; */
             margin-top: 9px;
 
         }
@@ -413,34 +416,7 @@
     }
 </style>
 
-<!-- <style>
-    @media (max-width: 360px) {
-        .container {
-            width: 95%;
-        }
 
-        .post  {
-            width: 95%; 
-        }
-
-        .post-content{
-            font-size: 15px;
-        }
-
-        .post-footer .counters {
-            display: flex;
-            gap: 4px;
-            font-size: 10px;
-            color: #616770;
-            
-        }
-
-        
-        .upload-button {
-            padding: 9px;
-        }
-    }
-</style> -->
 </head>
 <body>
     <div class="container">
@@ -459,12 +435,6 @@
             <input type="number" id="comment-count" placeholder="Number of Comments" value="1" min="0" maxlength="7">
             <input type="number" id="share-count" placeholder="Number of Shares" value="1" min="0" maxlength="7">
         </div>
-        <!-- <button id="toggle-actions" class="upload-button">إضافة أعداد التفاعل</button>
-        <br>
-
-        <button id="toggle-dark-mode" class="upload-button">دارك مود</button>
-        <br>
-        <button id="download-post" class="upload-button">تحميل صورة البوست</button> -->
 
         <div class="button-container">
             <button id="toggle-actions" class="upload-button">أعداد التفاعل</button>
@@ -485,7 +455,6 @@
 
     <div class="post" id="post">
         <div class="close-button">
-            <!-- &hellip; -->
         <img src="more_icon_177186.png" alt="">
         </div>
         <div class="post-header">
@@ -503,7 +472,6 @@
         
 
 
-        <!-- Hello dear family in the Power Family group, we are always here to support and inspire each other. In this family, we share dreams and cooperate to achieve them, strengthen mutual strength and grow together. -->
 
         <div class="post-content" id="display-text">
             كل فرد في Power Family يملك قوة فريدة، وعندما نجتمع كعائلة، نصبح أقوى بكثير. لنستمر في بناء جسور الثقة والتفاهم، ولندعم بعضنا البعض في كل خطوة نخطوها. لنبذل جهودنا معًا لنحقق النجاحات ونتعلم من التحديات.
@@ -574,7 +542,6 @@
 
         postElement.classList.toggle('dark-mode');
         
-        // تغيير نص الزر بناءً على حالة الوضع الحالية
         if (postElement.classList.contains('dark-mode')) {
             toggleButton.textContent = 'الوضع النهاري';
         } else {
@@ -594,7 +561,6 @@ const names = [
 ];
 
 function updateNameList() {
-    // احتمالية عرض 3 أسماء عشوائية
     const randomNames = [];
     while (randomNames.length < 1) {
         const randomIndex = Math.floor(Math.random() * names.length);
@@ -606,7 +572,6 @@ function updateNameList() {
 
     const nameListElement = document.getElementById("name-list");
 
-    // إضافة كلمة "and" بعد آخر اسم فقط
     const formattedNames = randomNames.join(", ") + " and";
     nameListElement.textContent = formattedNames;
 }
@@ -752,74 +717,28 @@ function updateTotalInteractions() {
 
 
     </script>
-    <!-- <script>
-        window.onload = function() {
-            var element = document.getElementById('display-text');
-            var textContent = element.textContent || element.innerText;
-
-            // Regular expression to detect Arabic characters
-            var arabicPattern = /[\u0600-\u06FF]/;
-
-            if (arabicPattern.test(textContent)) {
-                element.classList.add('text-right');
-            } else {
-                element.classList.add('text-left');
-            }
-        };
-    </script> -->
+    
     <script>
 
 
 
-// var visibleIcons = []; // مصفوفة لتتبع الأيقونات التي تم عرضها
-
-// function toggleVisibility(elementId) {
-//     var element = document.getElementById(elementId);
-    
-//     // إذا كانت الأيقونة مرئية، قم بإخفائها وإزالتها من المصفوفة
-//     if (element.style.display !== 'none') {
-//         element.style.display = 'none';
-//         visibleIcons = visibleIcons.filter(id => id !== elementId);
-//     } else {
-//         // التحقق من عدد الأيقونات المرئية
-//         if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
-//             return; // توقف الدالة دون عرض أيقونة إضافية
-//         }
-        
-//         // إذا كانت الأيقونة مخفية، قم بإظهارها وإضافتها إلى نهاية المصفوفة
-//         element.style.display = 'inline-block';
-//         visibleIcons.push(elementId);
-//     }
-    
-//     // ضبط ترتيب الأيقونات بحيث يكون الأيقونات المرئية في نهاية القائمة
-//     var iconsContainer = document.getElementById('icons-container'); // تغييره إلى العنصر الذي يحتوي على الأيقونات
-//     visibleIcons.forEach(id => {
-//         var icon = document.getElementById(id);
-//         iconsContainer.appendChild(icon);
-//     });
-// }
-
-
-var visibleIcons = []; // مصفوفة لتتبع الأيقونات التي تم عرضها
+var visibleIcons = []; 
 
 function toggleVisibility(elementId) {
     var element = document.getElementById(elementId);
     
-    // إذا كانت الأيقونة مرئية، قم بإخفائها وإزالتها من المصفوفة
     if (element.style.display !== 'none') {
         element.style.display = 'none';
         visibleIcons = visibleIcons.filter(id => id !== elementId);
     } else {
-        // التحقق من عدد الأيقونات المرئية
         if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
-            return; // توقف الدالة دون عرض أيقونة إضافية
+            return;
         }
         
-        // إذا كانت الأيقونة مخفية، قم بإظهارها وإضافتها إلى المصفوفة وإلى نهاية `iconsContainer`
         element.style.display = 'inline-block';
         visibleIcons.push(elementId);
         var iconsContainer = document.getElementById('icons-container');
-        iconsContainer.appendChild(element); // إضافة العنصر إلى نهاية `iconsContainer`
+        iconsContainer.appendChild(element); 
     }
 }
 
