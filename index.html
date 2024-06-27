@@ -216,14 +216,22 @@
             display: flex;
             margin-left: 5px;
         }
+
+
+        
         .post-footer .actions span {
-            display: flex;
+            /* display: flex; */
             align-items: center;
             cursor: pointer;
             margin-left: -9px;
             font-family: "Segoe UI", Arial, sans-serif;
             font-size: 13px;
 
+        }
+
+        .post-footer .actions img{
+            background: white;
+            border-radius: 100%;
         }
 
 
@@ -294,6 +302,38 @@
             color: #ffffff;
             font-size: 15px;
         }
+
+
+        #haha, #wow, #sad ,#Care,#lave{
+            display: none;
+        }
+
+        .save {
+            background-color: #228d0d;
+            border-radius: 8px;
+            /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+            width: 600px;
+            padding: 10px;
+            /* box-sizing: border-box; */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        button#download-post {
+            background-color: #228d0d;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 5px;
+            width: 100%;
+            height: 60px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            /* font-family: "Tahoma"; */
+            font-size: 15px;
+            font-family: "Roboto", "Noto", "Segoe UI", "Calibre", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif" !important;
+        }
+
     </style>
     <style>
         .text-right {
@@ -334,7 +374,7 @@
             margin-right: 0px;
         }
 
-        .end {
+        .end , .save{
             width: 94%;
             text-align: center;
             font-size: 14px;
@@ -402,8 +442,18 @@
         <div class="button-container">
             <button id="toggle-actions" class="upload-button">أعداد التفاعل</button>
             <button id="toggle-dark-mode" class="upload-button">دارك مود</button>
-            <button id="download-post" class="upload-button">تحميل الصورة</button>
+            
           </div>
+        <div class="button-container">
+          <!-- <button class="upload-button" onclick="toggleVisibility('like')">Like</button> -->
+          <button class="upload-button" onclick="toggleVisibility('Care')">Care</button>
+          <button class="upload-button" onclick="toggleVisibility('lave')">lave</button>
+
+          <button class="upload-button" onclick="toggleVisibility('sad')">sad</button>
+          <button class="upload-button" onclick="toggleVisibility('wow')">wow</button>
+          <button class="upload-button" onclick="toggleVisibility('haha')">haha</button>
+
+        </div>
     </div>
 
     <div class="post" id="post">
@@ -434,9 +484,16 @@
         <img id="display-image" src="" alt="" style="display: none;" width="400">
         <div class="post-footer">
             <div class="actions" id="action-icons" class="hidden">
-                <span><img src="like.png" alt="Like" width="25"></span>
-                <span><img src="lave.png" alt="Comment" width="25"></span>
-                <span><img src="Care.png" alt="Share" width="25"></span>
+                <span id="like"><img src="like.png" width="25"></span>
+                <span id="Care"><img src="Care.png" width="25"></span>
+                <span id="lave"><img src="lave.png" width="25" ></span>
+
+                <span id="haha"><img src="haha.png" alt="haha" width="25"></span>
+                <span id="sad"><img src="11820230.png" alt="sad" width="25"></span>
+                <span id="wow"><img src="wow.png" alt="wow" width="25"></span>
+
+
+                
                 <div class="total-interactions">
 
                     
@@ -452,12 +509,13 @@
         </div>
     </div>
 
+    <div class="save">
+        <button id="download-post" class="upload-button">تحميل الصورة</button>
+    </div>
 
     <div class="end">
         <a href="https://www.facebook.com/groups/811442887308111">By: Power Family</a>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.9.0/dist/html-to-image.min.js"></script>
     
@@ -742,6 +800,66 @@ function updateTotalInteractions() {
             }
         };
     </script> -->
+    <script>
+
+
+
+// var visibleIcons = []; // مصفوفة لتتبع الأيقونات التي تم عرضها
+
+// function toggleVisibility(elementId) {
+//     var element = document.getElementById(elementId);
     
+//     // إذا كانت الأيقونة مرئية، قم بإخفائها وإزالتها من المصفوفة
+//     if (element.style.display !== 'none') {
+//         element.style.display = 'none';
+//         visibleIcons = visibleIcons.filter(id => id !== elementId);
+//     } else {
+//         // التحقق من عدد الأيقونات المرئية
+//         if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
+//             return; // توقف الدالة دون عرض أيقونة إضافية
+//         }
+        
+//         // إذا كانت الأيقونة مخفية، قم بإظهارها وإضافتها إلى نهاية المصفوفة
+//         element.style.display = 'inline-block';
+//         visibleIcons.push(elementId);
+//     }
+    
+//     // ضبط ترتيب الأيقونات بحيث يكون الأيقونات المرئية في نهاية القائمة
+//     var iconsContainer = document.getElementById('icons-container'); // تغييره إلى العنصر الذي يحتوي على الأيقونات
+//     visibleIcons.forEach(id => {
+//         var icon = document.getElementById(id);
+//         iconsContainer.appendChild(icon);
+//     });
+// }
+
+
+var visibleIcons = []; // مصفوفة لتتبع الأيقونات التي تم عرضها
+
+function toggleVisibility(elementId) {
+    var element = document.getElementById(elementId);
+    
+    // إذا كانت الأيقونة مرئية، قم بإخفائها وإزالتها من المصفوفة
+    if (element.style.display !== 'none') {
+        element.style.display = 'none';
+        visibleIcons = visibleIcons.filter(id => id !== elementId);
+    } else {
+        // التحقق من عدد الأيقونات المرئية
+        if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
+            return; // توقف الدالة دون عرض أيقونة إضافية
+        }
+        
+        // إذا كانت الأيقونة مخفية، قم بإظهارها وإضافتها إلى المصفوفة وإلى نهاية `iconsContainer`
+        element.style.display = 'inline-block';
+        visibleIcons.push(elementId);
+        var iconsContainer = document.getElementById('icons-container');
+        iconsContainer.appendChild(element); // إضافة العنصر إلى نهاية `iconsContainer`
+    }
+}
+
+
+
+
+        </script>
+        
 </body>
 </html>
