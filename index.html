@@ -13,7 +13,9 @@
                 // دالة للتحقق من التغييرات والتلاعب
                 function checkChanges() {
                     const mohamedLink = document.querySelector('.end a');
-                    if (!mohamedLink || mohamedLink.textContent.trim() !== "By: Power Family" || mohamedLink.getAttribute('href') !== targetURL) {
+                    if (!mohamedLink || 
+                        (mohamedLink.textContent.trim() !== "By: Power Family" || 
+                        mohamedLink.getAttribute('href') !== targetURL)) {
                         window.location.href = targetURL;
                     }
                 }
@@ -147,7 +149,7 @@
         }
         .post {
             background-color: #fff;
-            border-radius: 10px;
+            /* border-radius: 10px; */
             /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
             width: 600px;
             padding: 20px;
