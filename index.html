@@ -468,7 +468,7 @@
 
         <div class="button-container">
             <button id="toggle-actions" class="upload-button">أعداد التفاعل</button>
-            <button id="toggle-dark-mode" class="upload-button">دارك مود</button>
+            <button id="toggle-dark-mode" class="upload-button">الوضع الليلي</button>
             
           </div>
         <div class="button-container">
@@ -568,18 +568,23 @@
 
 
 <script>
-
     document.getElementById('toggle-dark-mode').addEventListener('click', function() {
-                var postElement = document.getElementById('post');
-    
-                var req = document.getElementById("name-list");
-    
-    
-    
-                postElement.classList.toggle('dark-mode');
-                // req.classList.toggle('dark-modereqt');
-            });
-    </script>
+        var postElement = document.getElementById('post');
+        var toggleButton = document.getElementById('toggle-dark-mode');
+
+        postElement.classList.toggle('dark-mode');
+        
+        // تغيير نص الزر بناءً على حالة الوضع الحالية
+        if (postElement.classList.contains('dark-mode')) {
+            toggleButton.textContent = 'الوضع النهاري';
+        } else {
+            toggleButton.textContent = 'الوضع الليلي';
+        }
+    });
+</script>
+
+
+
 
     <script>
 
@@ -629,77 +634,6 @@ updateNameList();
                 });
         });
 
-
-        // //////////////////////////////////////////
-//     document.getElementById('download-post').addEventListener('click', function() {
-//     var postElement = document.getElementById('post');
-    
-//     postElement.style.width = '600px';  
-//     // postElement.style.height = '300px'; 
-//     postElement.style.padding = '10px 10px 10px 10px'; 
-//     postElement.style.margin = '0';  
-//     // postElement.style.borderRadius = '10px 10px 10px 10px'; 
-//     // postElement.style.overflow = 'hidden';  
-    
-//     // postElement.style.textAlign = 'left';  
-    
-//     var innerElements = postElement.getElementsByClassName('inner-element');
-//     for (var i = 0; i < innerElements.length; i++) {
-//         var innerElement = innerElements[i];
-//         // innerElement.style.width = '580px';  
-//         // innerElement.style.height = '280px'; 
-//         // innerElement.style.padding = '10px';  
-//     }
-    
-
-//     var options = {
-//         width: 620,
-//         // height: 300
-
-//     };
-    
-    
-//     htmlToImage.toPng(postElement, options) 
-//         .then(function (dataUrl) {
-//             var link = document.createElement('a');
-//             link.href = dataUrl;
-//             link.download = 'post.png';
-//             link.click();
-            
-//             postElement.style.width = ''; 
-//             postElement.style.height = ''; 
-//             postElement.style.padding = ''; 
-//             postElement.style.margin = ''; 
-//             postElement.style.border = ''; 
-//             postElement.style.borderRadius = ''; 
-//             postElement.style.textAlign = ''; 
-            
-//             for (var i = 0; i < innerElements.length; i++) {
-//                 var innerElement = innerElements[i];
-//                 innerElement.style.width = ''; 
-//                 innerElement.style.height = ''; 
-//                 innerElement.style.padding = ''; 
-//             }
-//         })
-//         .catch(function (error) {
-//             console.error('Error generating image:', error);
-            
-//             postElement.style.width = ''; 
-//             postElement.style.height = ''; 
-//             postElement.style.padding = ''; 
-//             postElement.style.margin = ''; 
-//             postElement.style.border = ''; 
-//             postElement.style.borderRadius = '';
-//             postElement.style.textAlign = ''; 
-            
-//             for (var i = 0; i < innerElements.length; i++) {
-//                 var innerElement = innerElements[i];
-//                 innerElement.style.width = ''; 
-//                 innerElement.style.height = ''; 
-//                 innerElement.style.padding = ''; 
-//             }
-//         });
-// });
 
 
     // 111111111111111111111111111111111
