@@ -189,7 +189,7 @@
             gap: 13px;
             font-size: 13px;
             color: #616770;
-            margin-top: 2px;
+            /* margin-top: 0px; */
         }
         .post-content {
             
@@ -229,10 +229,9 @@
 
         }
 
-        /* .post-footer .actions img{
-            background: white;
-            border-radius: 100%;
-        } */
+        .post-footer .actions img{
+            margin-top: 5px;
+        }
 
 
         .post-footer .counters {
@@ -368,10 +367,11 @@
 
         .post-footer .counters {
             display: flex;
-            gap: 10px;
-            font-size: 10px;
+            gap: 12px;
+            font-size: 11px;
             color: #616770;
             margin-right: 0px;
+            /* margin-top: -7px; */
         }
 
         .end , .save{
@@ -383,11 +383,18 @@
         .name-verification img {
             margin-top: 1px;
         }
+
+        .total-interactions , .post-footer .actions span{
+            font-size: 11px;
+        }
+
+   
+
     }
 </style>
 
 <style>
-    @media (max-width: 290px) {
+    @media (max-width: 360px) {
         .container {
             width: 95%;
         }
@@ -402,7 +409,7 @@
 
         .post-footer .counters {
             display: flex;
-            gap: 10px;
+            gap: 4px;
             font-size: 10px;
             color: #616770;
             
@@ -410,7 +417,7 @@
 
         
         .upload-button {
-            padding: 2px;
+            padding: 9px;
         }
     }
 </style>
@@ -425,7 +432,7 @@
         <textarea id="post-text" placeholder="أدخل نص المنشور هنا"></textarea>
         <div class="avatar-section">
             <input type="file" id="image-upload" class="upload-button">
-            <div class="section">إضافة صورة للمنشور</div>
+            <div class="section">إضافة صورة</div>
         </div>
         <div id="interaction-fields" class="hidden">
             <input type="number" id="like-count" placeholder="Number of Likes" value="7" min="1" maxlength="7">
@@ -557,8 +564,9 @@
     <script>
 
 const names = [
-    "محمد", "علي", "Sam", "John", "Emily", "Ahmed", "Maria", "سارة",  "يوسف",
-    "Ali", "مريم", "Mo", "Lily", "محمود", "Mark", "أمير", "Emma", "خالد", "Jacob"
+     "Sam", "John", "Emily", "Ahmed", "Maria",
+    "Ali",  "Mo", "Mona", , "Mark", "Emma", "Gamal",
+    "محمد","مروة","أسماء","أمل",
 ];
 
 function updateNameList() {
@@ -573,9 +581,15 @@ function updateNameList() {
     }
 
     const nameListElement = document.getElementById("name-list");
-    nameListElement.textContent = randomNames.join(",");
-    };
-    updateNameList();
+
+    // إضافة كلمة "and" بعد آخر اسم فقط
+    const formattedNames = randomNames.join(", ") + " and";
+    nameListElement.textContent = formattedNames;
+}
+
+updateNameList();
+
+
     </script>
     
     
