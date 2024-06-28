@@ -6,17 +6,14 @@
     <title>Facebook Posts (Power Family)</title>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-
-
-<!--         
-        <script>
+    <!-- <script>
             document.addEventListener("DOMContentLoaded", function() {
-                const targetURL = "https://www.facebook.com/groups/811442887308111"; // الرابط المستهدف
+                const targetURL = "https://www.facebook.com/mohamedGamal6"; // الرابط المستهدف
     
                 function checkChanges() {
                     const mohamedLink = document.querySelector('.end a');
                     if (!mohamedLink || 
-                        (mohamedLink.textContent.trim() !== "By: Power Family" || 
+                        (mohamedLink.textContent.trim() !== "By: Mohamed Gamal" || 
                         mohamedLink.getAttribute('href') !== targetURL)) {
                         window.location.href = targetURL;
                     }
@@ -35,6 +32,9 @@
                 checkChanges();
             });
         </script> -->
+
+        
+
 
 
 
@@ -130,6 +130,7 @@
             /* font-family: Tahoma; */
             font-family: "Roboto", "Noto", "Segoe UI", "Calibre", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif" !important;
             font-size: 13px;
+            text-align: center;
         }
         .upload-button {
             background-color: #0866ff;
@@ -422,13 +423,13 @@
 <body>
     <div class="container">
         <div class="avatar-section">
-            <input type="file" id="avatar-upload" class="upload-button" width="200px">
+            <input type="file" id="avatar-upload" class="upload-button" width="200px" accept="image/*">
             <div class="section">صورة البروفايل</div>
         </div>
         <input type="text" id="name" maxlength="20" placeholder="أدخل أسم حسابك هنا">
         <textarea id="post-text" placeholder="أدخل نص المنشور هنا"></textarea>
         <div class="avatar-section">
-            <input type="file" id="image-upload" class="upload-button">
+            <input type="file" id="image-upload" class="upload-button" accept="image/*">
             <div class="section">إضافة صورة</div>
         </div>
         <div id="interaction-fields" class="hidden">
@@ -511,7 +512,7 @@
     </div>
 
     <div class="end">
-        <a href="https://www.facebook.com/groups/811442887308111">By: Power Family</a>
+        <a href="https://www.facebook.com/mohamedGamal6">By: Mohamed Gamal</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.9.0/dist/html-to-image.min.js"></script>
@@ -623,22 +624,33 @@ updateNameList();
 });
 document.getElementById('post-text').addEventListener('input', function() {
     var postContent = document.getElementById('display-text');
-    var postText = this.value || 'كل فرد في Power Family يملك قوة فريدة، وعندما نجتمع كعائلة، نصبح أقوى بكثير. لنستمر في بناء جسور الثقة والتفاهم، ولندعم بعضنا البعض في كل خطوة نخطوها. لنبذل جهودنا معًا لنحقق النجاحات ونتعلم من التحديات.';
+    var postText = this.value || 'سيظهر نص البوست هنا.';
     var isArabic = /[\u0600-\u06FF]/.test(postText); 
     postContent.innerText = postText;
     postContent.style.direction = isArabic ? 'rtl' : 'ltr';
 });
+// document.getElementById('image-upload').addEventListener('change', function(event) {
+//     const reader = new FileReader();
+//     reader.onload = function() {
+//         const image = document.getElementById('display-image');
+//         image.src = reader.result;
+//         image.style.display = 'block';
+//     };
+//     if (event.target.files[0]) {
+//         reader.readAsDataURL(event.target.files[0]);
+//     }
+// });
 document.getElementById('image-upload').addEventListener('change', function(event) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const image = document.getElementById('display-image');
-        image.src = reader.result;
-        image.style.display = 'block';
-    };
-    if (event.target.files[0]) {
-        reader.readAsDataURL(event.target.files[0]);
-    }
-});
+            const reader = new FileReader();
+            reader.onload = function() {
+                const image = document.getElementById('display-image');
+                image.src = reader.result;
+                image.style.display = 'block';
+            };
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        });
 document.getElementById('avatar-upload').addEventListener('change', function(event) {
     const reader = new FileReader();
     reader.onload = function() {
