@@ -345,9 +345,25 @@
             margin-top: 5px;
         }
 
-        span#display-username {
+        /* span#display-username {
             margin-top: -3px;
             margin-left: 4px;
+        } */
+
+        .avatar-section label {
+
+        padding: 10px;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 auto;
+        text-align: right;
+        width: 48%;
+        margin-top: -6px;
+    
+        }
+
+        .avatar-section input[type="file"]:focus + label {
+            border-color: #5b9dd9;
         }
 
     </style>
@@ -431,13 +447,14 @@
     <div class="container">
         <div class="avatar-section">
             <input type="file" id="avatar-upload" class="upload-button" width="200px" accept="image/*">
-            <div class="section">صورة البروفايل</div>
+            <label for="file-upload">صورة شخصية</label>
+            <!-- <div class="section">صورة البروفايل</div> -->
         </div>
         <input type="text" id="name" maxlength="20" placeholder="أدخل أسم حسابك هنا">
         <textarea id="post-text" placeholder="أدخل نص المنشور هنا"></textarea>
         <div class="avatar-section">
             <input type="file" id="image-upload" class="upload-button" accept="image/*">
-            <div class="section">إضافة صورة</div>
+            <label for="file-upload">صورة للبوست</label>
         </div>
         <div id="interaction-fields" class="hidden">
             <input type="number" id="like-count" placeholder="Number of Likes" value="7" min="1" maxlength="7">
