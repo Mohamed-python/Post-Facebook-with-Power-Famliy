@@ -473,9 +473,10 @@
         
 
 
+        <!-- كل فرد في Power Family يملك قوة فريدة، وعندما نجتمع كعائلة، نصبح أقوى بكثير. لنستمر في بناء جسور الثقة والتفاهم، ولندعم بعضنا البعض في كل خطوة نخطوها. لنبذل جهودنا معًا لنحقق النجاحات ونتعلم من التحديات. -->
 
         <div class="post-content" id="display-text">
-            كل فرد في Power Family يملك قوة فريدة، وعندما نجتمع كعائلة، نصبح أقوى بكثير. لنستمر في بناء جسور الثقة والتفاهم، ولندعم بعضنا البعض في كل خطوة نخطوها. لنبذل جهودنا معًا لنحقق النجاحات ونتعلم من التحديات.
+سيظهر نص البوست هنا.
         </div>
         <img id="display-image" src="" alt="" style="display: none;" width="400">
         <div class="post-footer">
@@ -545,8 +546,10 @@
         
         if (postElement.classList.contains('dark-mode')) {
             toggleButton.textContent = 'الوضع النهاري';
+            toggleButton.style.background = "#000000";
         } else {
             toggleButton.textContent = 'الوضع الليلي';
+            toggleButton.style.background = "#0866ff";
         }
     });
 </script>
@@ -558,7 +561,7 @@
 
 const names = [
     "Ali", "Omar", "Sara", "Mona", "Amir", "Hoda", "Maha", "Nada", "Ramy", "Tara", "Gaby",
-    "Aya", "Lia", "May", "Mo", "Nia" , "Joo","Aida", "Eman", "Hani", "Kare", "Nour","Yara"
+    "Aya", "Mo", "Omnia" , "Joo","Aida", "Eman", "Toto", "Nour","Yara"
 ];
 
 function updateNameList() {
@@ -719,34 +722,31 @@ function updateTotalInteractions() {
 
     </script>
     
+
+
     <script>
+        var visibleIcons = []; 
 
-
-
-var visibleIcons = []; 
-
-function toggleVisibility(elementId) {
-    var element = document.getElementById(elementId);
-    
-    if (element.style.display !== 'none') {
-        element.style.display = 'none';
-        visibleIcons = visibleIcons.filter(id => id !== elementId);
-    } else {
-        if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
-            return;
+        function toggleVisibility(elementId) {
+            var element = document.getElementById(elementId);
+            
+            if (element.style.display !== 'none') {
+                element.style.display = 'none';
+                visibleIcons = visibleIcons.filter(id => id !== elementId);
+            } else {
+                if (visibleIcons.length === 2 && !visibleIcons.includes(elementId)) {
+                    return;
+                }
+                element.style.display = 'inline-block';
+                visibleIcons.push(elementId);
+                var iconsContainer = document.getElementById('icons-container');
+                iconsContainer.appendChild(element); 
+            }
         }
-        
-        element.style.display = 'inline-block';
-        visibleIcons.push(elementId);
-        var iconsContainer = document.getElementById('icons-container');
-        iconsContainer.appendChild(element); 
-    }
-}
+    </script>
 
 
 
-
-        </script>
         
 </body>
 </html>
